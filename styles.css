@@ -13,6 +13,7 @@ body {
 
 .cmds li {
     list-style-type: none;
+    white-space: pre;
 }
 
 .active {

@@ -1,0 +1,68 @@
+body {
+    background: #222;
+    color: #CCC;
+    font-family: Consolas;
+    padding: 0;
+    margin: 0;
+}
+
+.cmds {
+    padding: 0;
+    margin: 0;
+}
+
+.cmds li {
+    list-style-type: none;
+}
+
+.active {
+    background: rgba(255,255,255,.1)
+}
+
+.cmd {
+    position: relative;
+    white-space: pre;
+}
+
+.cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background-color: #606060;
+    vertical-align: top;
+    width: .6rem;
+    height: 1.2rem;
+    -webkit-animation: blink 1s step-end infinite;
+    animation: blink 1s step-end infinite;
+}
+
+.help {
+    color: #aaa;
+    font-style: italic;
+}
+
+.helps {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.cmds, .helps{
+    padding: 0;
+    margin: 0;
+    width: 49%;
+}
+
+@-webkit-keyframes blink {
+    0% { opacity: .7; }
+    50% { opacity: 0.0; }
+    100% { opacity: .7; }
+}
+
+@keyframes blink {
+    0% { opacity: .7; }
+    50% { opacity: 0.0; }
+    100% { opacity: .7; }
+}

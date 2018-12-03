@@ -132,7 +132,7 @@ var app = new Vue({
         pos: 0,
         
         help: '',
-        helps: '',
+        helps: [],
         cmds: location.hash == '#router' ? router_cmds : switch_cmds,
         history: [],
         history_ptr: 0,
@@ -142,11 +142,13 @@ var app = new Vue({
         KeyDown() {
             this.helps = []
             this.cmds.forEach(
-                (x) => this.helps.push(...x.commands.filter(
-                    (cmd) => cmd.enabled == this.enabled
-                        && cmd.mode == this.mode
-                        && CmdCmpr(this.cmd, cmd.description)
-                    )))
+                (x) => this.helps.push({
+                    group: x.group,
+                    commands: x.commands.filter(
+                        (cmd) => cmd.enabled == this.enabled
+                            && cmd.mode == this.mode
+                            && CmdCmpr(this.cmd, cmd.description))
+                }))
             
             //this.helps.sort((a, b) => a.length - b.length)
             let help = CmdMasks(this.cmd, true)

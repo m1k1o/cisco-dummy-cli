@@ -120,7 +120,8 @@ let switch_cmds =
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "default interface <fa0/1>"
+				"description": "default interface <fa0/1>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
@@ -135,7 +136,8 @@ let switch_cmds =
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "interface range <fa0/1-10>"
+				"description": "interface range <fa0/1-10>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
@@ -250,7 +252,8 @@ let switch_cmds =
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "mac address-table static <mac_address> vlan <id> interface <fa0/1>"
+				"description": "mac address-table static <mac_address> vlan <id> interface <fa0/1>",
+				"greedy": true
 			},
 			{
 				"enabled": true,

@@ -15,8 +15,7 @@ var CmdCmpr = (cmd, mask, greedy = false) => {
         let w_mask = a_mask[i]
 
         if(typeof w_mask == 'undefined')
-            if(greedy) continue
-            else return false
+            return greedy
         
         // Check for input
         if(w_mask.match(/\<.*\>/))
@@ -44,7 +43,7 @@ var CmdMasks = (short, wildcard = false) => {
     cmds = cmds.filter(
         (cmd) => cmd.enabled == app.enabled
             && cmd.mode == app.mode
-            && CmdCmpr(short, cmd.description, false)
+            && CmdCmpr(short, cmd.description, typeof cmd.greedy !== "undefined" && cmd.greedy)
     )
     
     if(!wildcard)

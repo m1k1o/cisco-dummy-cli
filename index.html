@@ -13,12 +13,15 @@
 </head>
 <body>
     <div id="app">
-        <ul class="cmds">
+        <ul class="cmds console">
             <li v-for="(h, i) in history" v-bind:class="{active: i == history_ptr && !curr_ptr}"><span v-if="h.type == 'cmd'"><span>{{ h.hostname }}</span><span v-if="!h.enabled">></span><span v-else><span v-if="h.mode">({{ h.mode }})</span>#</span> <strong>{{ h.description}}</strong></span><span v-if="h.type == 'text'">{{ h.text }}</span></li>
             <li v-bind:class="{active: curr_ptr}"><span>{{ hostname }}</span><span v-if="!enabled">></span><span v-else><span v-if="mode">({{ mode }})</span>#</span> <span class="cmd">{{ cmd }}<span class="cursor" v-bind:style="{left: (8.79*pos)+'px'}"></span></span> <span class="help">{{ help }}</span></li>
         </ul>
         <ul class="cmds helps">
-            <li v-for="h in helps" class="help"><span>{{ hostname }}</span><span v-if="!h.enabled">></span><span v-else><span v-if="h.mode">({{ h.mode }})</span>#</span> <strong>{{ h.description}}</strong></li>
+            <template v-for="group in helps" v-if="group.commands.length > 0">
+                <li class="help active" style="margin-top: 10px;">{{ group.group }}</li>
+                <li v-for="h in group.commands" class="help"><span>{{ hostname }}</span><span v-if="!h.enabled">></span><span v-else><span v-if="h.mode">({{ h.mode }})</span>#</span> <strong>{{ h.description}}</strong></li>
+            </template>
         </ul>
     </div>
 

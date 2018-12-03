@@ -125,12 +125,20 @@ let router_cmds =
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "default interface <type> <slot/port>"
+				"description": "default interface <type> <slot/port>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "interface <type> <slot/port>"
+				"description": "interface <type> <slot/port>",
+				"greedy": true
+			},
+			{
+				"enabled": true,
+				"mode": "config",
+				"description": "interface range <type> <slot/port>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
@@ -210,7 +218,8 @@ let router_cmds =
 			{
 				"enabled": true,
 				"mode": "",
-				"description": "show interface <type> <slot/port>"
+				"description": "show interface <type> <slot/port>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
@@ -220,7 +229,8 @@ let router_cmds =
 			{
 				"enabled": true,
 				"mode": "",
-				"description": "show controllers <type> <slot/port>"
+				"description": "show controllers <type> <slot/port>",
+				"greedy": true
 			}
 		]
 	},
@@ -230,7 +240,8 @@ let router_cmds =
 			{
 				"enabled": true,
 				"mode": "config",
-				"description": "interface <type> <slot/port>"
+				"description": "interface <type> <slot/port>",
+				"greedy": true
 			},
 			{
 				"enabled": true,
@@ -250,7 +261,8 @@ let router_cmds =
 			{
 				"enabled": true,
 				"mode": "config-if",
-				"description": "interface <type> <slot/port.subif_number>"
+				"description": "interface <type> <slot/port.subif_number>",
+				"greedy": true
 			},
 			{
 				"enabled": true,

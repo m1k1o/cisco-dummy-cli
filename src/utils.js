@@ -38,6 +38,20 @@ var CmdCmpr = (cmd, mask, greedy = false) => {
     return true
 }
 
+var GetCmd = (short) => {
+    let cmds = app.cmds.flatMap((x) => x.commands)
+    cmds = cmds.filter(
+        (cmd) => cmd.enabled == app.enabled
+            && cmd.mode == app.mode
+            && CmdCmpr(short, cmd.description, typeof cmd.greedy !== "undefined" && cmd.greedy)
+    )
+
+    if(cmds.length == 1)
+        return cmds[0]
+    
+    return undefined
+}
+
 var CmdMasks = (short, wildcard = false) => {
     let cmds = app.cmds.flatMap((x) => x.commands)
     cmds = cmds.filter(
@@ -52,7 +66,7 @@ var CmdMasks = (short, wildcard = false) => {
     if(cmds.length == 1)
         return cmds[0].description
 
-    cmds.sort((a, b) => a.length - b.length)
+    cmds.sort((a, b) => a.description.length - b.description.length)
     let word = null
     return typeof cmds.find((cmd) => {
         if(word == null) {

@@ -188,20 +188,49 @@ var app = new Vue({
             this.curr_ptr = true
             let expand = CmdExpand(this.cmd.trim())
             let exists = CmdMasks(expand, true)
+            let func = GetCmd(expand)
 
-            if(exists) {
+            let handler = () => {
+                if(typeof func == 'undefined') {
+                    this.history.push({
+                        "type": 'text',
+                        "text": '% Unknown command.'
+                    })
+                    return
+                }
+                
+                if(typeof func.validate != 'undefined' && !func.validate(expand)) {
+                    this.history.push({
+                        "type": 'text',
+                        "text": '% Not valid input.'
+                    })
+                    return
+                }
+                
                 StatesHandler(expand)
-                Run(expand)
-                this.history.push({
-                    "type": 'text',
-                    "text": '> '+expand
-                })
-            } else {
-                this.history.push({
-                    "type": 'text',
-                    "text": '% Unknown command.'
-                })
-            }
+
+                // Debugging purposes
+                if(typeof func.run == 'undefined') {
+                    this.history.push({
+                        "type": 'text',
+                        "text": '> '+expand
+                    })
+                    return
+                }
+
+                let result = func.run(expand)
+                if(typeof result == 'string') {
+                    this.history.push({
+                        "type": 'text',
+                        "text": result
+                    })
+                } else if(Array.isArray(result)){
+                    this.history.push(...result)
+                } else {
+                    this.history.push(result)
+                }
+            };
+            handler()
             
             this.cmd = ''
             this.pos = 0
@@ -210,7 +239,3 @@ var app = new Vue({
         }
     }
 });
-
-var Run = (cmd) => {
-
-}

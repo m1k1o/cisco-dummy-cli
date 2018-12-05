@@ -137,7 +137,11 @@ let switch_cmds =
 				"enabled": true,
 				"mode": "config",
 				"description": "interface range <fa0/1-10>",
-				"greedy": true
+				"greedy": true,
+				"validate": (input) => {
+					return input.match(/interface range ([a-zA-Z]+\s*[0-9]{1,2}(\/[0-9]{1,2}){1,3}\s*(-\s*[0-9]{1,2})\s*?,?\s*)+/) !== null
+				},
+				//"run": (input) => {}
 			},
 			{
 				"enabled": true,

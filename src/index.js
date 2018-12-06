@@ -123,7 +123,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Set cursor width
-var ch_w = document.getElementById("ch").offsetWidth
+var ch_w = getComputedStyle(document.getElementById("ch"))["width"].replace(/px/, '')
 document.querySelectorAll(".cursor").forEach(e => e.setAttribute("style", "width:"+ch_w+"px;"))
 
 var app = new Vue({
@@ -140,7 +140,8 @@ var app = new Vue({
         cmds: location.hash == '#router' ? router_cmds : switch_cmds,
         history: [],
         history_ptr: 0,
-        curr_ptr: true
+        curr_ptr: true,
+        ch_w
     },
     methods: {
         KeyDown() {

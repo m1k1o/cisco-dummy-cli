@@ -1,5 +1,3 @@
-export {}
-
 if (typeof Array.prototype.flatMap !== 'function') {
   // eslint-disable-next-line no-extend-native
   Object.defineProperty(Array.prototype, 'flatMap', {

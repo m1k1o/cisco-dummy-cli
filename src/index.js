@@ -122,6 +122,10 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+// Set cursor width
+var ch_w = document.getElementById("ch").offsetWidth
+document.querySelectorAll(".cursor").forEach(e => e.setAttribute("style", "width:"+ch_w+"px;"))
+
 var app = new Vue({
     el: '#app',
     data: {

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" type="text/css" media="all" />
 </head>
 <body>
+    <span id="ch">W</span>
     <div id="app">
         <ul class="cmds console">
             <li v-for="(h, i) in history" v-bind:class="{active: i == history_ptr && !curr_ptr}"><span v-if="h.type == 'cmd'"><span>{{ h.hostname }}</span><span v-if="!h.enabled">></span><span v-else><span v-if="h.mode">({{ h.mode }})</span>#</span> <strong>{{ h.description}}</strong></span><span v-if="h.type == 'text'">{{ h.text }}</span></li>

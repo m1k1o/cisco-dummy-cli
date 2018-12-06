@@ -1,7 +1,7 @@
 body {
     background: #222;
     color: #CCC;
-    font-family: Consolas;
+    font-family: Consolas, monospace;
     padding: 0;
     margin: 0;
     overflow: hidden;
@@ -69,4 +69,11 @@ body {
     0% { opacity: .7; }
     50% { opacity: 0.0; }
     100% { opacity: .7; }
+}
+
+#ch {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    bottom: 0;
 }
